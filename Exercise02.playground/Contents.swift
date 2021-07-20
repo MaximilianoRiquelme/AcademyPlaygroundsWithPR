@@ -1,6 +1,21 @@
 import UIKit
 
-class exercise02
+/*
+ Write a function that receives 2 params, first is an array of integers and the second an integer number.
+ The function should print the count of numbers inside the array that are lower or greater than the second param.
+
+ For example:
+
+ Array is: [110, 20, 100, 0, 200]
+
+ Int number is: 100
+
+ Result:
+
+ “There are 2 numbers lower and 2 greater than 100”
+ */
+
+class Counter
 {
     var arrayOfInts : [Int]
     var anInt : Int
@@ -11,11 +26,12 @@ class exercise02
         anInt = 0
     }
     
-    func lowerAndHighers(arrayOfInts : [Int], anInt : Int)
+    /// Counts how many numbers are lower and higher than a specified integer.
+    /// - Parameters:
+    ///   - arrayOfInts: Array of integers
+    ///   - anInt: The specific integer to consider.
+    func getLowersAndHighersThan(arrayOfInts : [Int], anInt : Int)
     {
-        self.arrayOfInts = arrayOfInts
-        self.anInt = anInt
-        
         var lowers = 0
         var highers = 0
         
@@ -42,6 +58,11 @@ class exercise02
     }
 }
 
-var obj = exercise02()
-obj.lowerAndHighers(arrayOfInts: [1, 2, 3, 4, 5], anInt: 2)
-obj.lowerAndHighers(arrayOfInts: [1, 2, 3, 4, 5], anInt: 3)
+var counter = Counter()
+
+var arrayOfInts = [1, 2, 3, 4, 5]
+
+counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 2)
+counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 3)
+counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 1)
+counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 5)
