@@ -1,4 +1,5 @@
 import UIKit
+import XCTest
 
 /*
  Given the variable distance:
@@ -22,31 +23,46 @@ class Measurer
 {
     /// Returns a string indicating how far is an object from you.
     /// - Parameter distance: The distance at which the object is from you as a Positive Integer.
-    func howFarIsItFromMe(distance : UInt)
+    func howFarIsItFromMe(distance : UInt) -> String
     {
         switch distance
         {
         case 0:
             print("Here")
+            return ("Here")
         case 1..<5:
             print("Immediate Vicinity")
+            return ("Immediate Vicinity")
         case 5...15:
             print("Near")
+            return ("Near")
         case 16...40:
             print("Kind of Far")
+            return ("Kind of Far")
         default:
             print("Far")
+            return ("Far")
         }
     }
 }
 
-var measurer = Measurer()
-measurer.howFarIsItFromMe(distance: 0)
-measurer.howFarIsItFromMe(distance: 1)
-measurer.howFarIsItFromMe(distance: 4)
-measurer.howFarIsItFromMe(distance: 5)
-measurer.howFarIsItFromMe(distance: 6)
-measurer.howFarIsItFromMe(distance: 15)
-measurer.howFarIsItFromMe(distance: 16)
-measurer.howFarIsItFromMe(distance: 40)
-measurer.howFarIsItFromMe(distance: 41)
+class MeasurerTest : XCTestCase
+{
+    /*
+     Tests for problematic use cases.
+     */
+    func testHowFarIsFromMe()
+    {
+        let measurer = Measurer()
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 0), "Here")
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 1), "Immediate Vicinity")
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 4), "Immediate Vicinity")
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 5), "Near")
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 15), "Near")
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 16), "Here")
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 40), "Kind of Far")
+        XCTAssertEqual(measurer.howFarIsItFromMe(distance: 41), "Far")
+    }
+}
+
+MeasurerTest.defaultTestSuite.run()

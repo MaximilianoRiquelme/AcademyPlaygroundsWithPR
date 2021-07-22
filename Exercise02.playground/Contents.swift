@@ -1,4 +1,5 @@
 import UIKit
+import XCTest
 
 /*
  Write a function that receives 2 params, first is an array of integers and the second an integer number.
@@ -66,3 +67,4 @@ counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 2)
 counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 3)
 counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 1)
 counter.getLowersAndHighersThan(arrayOfInts: arrayOfInts, anInt: 5)
+

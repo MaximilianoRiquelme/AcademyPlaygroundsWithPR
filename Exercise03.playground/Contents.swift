@@ -1,4 +1,5 @@
 import UIKit
+import XCTest
 
 /*
  Rewrite the following function using guard statements. You can use 2 guard statements or 1 compound guard statement. Actually, try both. :-)
@@ -26,20 +27,29 @@ import UIKit
 
 class Checker
 {
-    func printIfPositiveInteger(number : String)
+    func printIfPositiveInteger(number : String) -> Bool
     {
         guard let value = Int(number), value > 0 else
         {
             print("number is not a valid variable!!!")
-            return
+            return false
         }
         
         print(value)
+        return true
     }
 }
 
-var checker = Checker()
+class CheckerTest : XCTestCase
+{
+    func testPrintIfPositiveInteger()
+    {
+        let checker = Checker()
+        XCTAssertEqual(checker.printIfPositiveInteger(number: "abc"), false)
+        XCTAssertEqual(checker.printIfPositiveInteger(number: "-10"), false)
+        XCTAssertEqual(checker.printIfPositiveInteger(number: "10"), true)
+        XCTAssertEqual(checker.printIfPositiveInteger(number: "0"), false)
+    }
+}
 
-checker.printIfPositiveInteger(number : "abc")
-checker.printIfPositiveInteger(number : "-10")
-checker.printIfPositiveInteger(number : "10")
+CheckerTest.defaultTestSuite.run()
